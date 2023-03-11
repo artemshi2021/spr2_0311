@@ -32,7 +32,10 @@ class Logger {
     // Для имени файла возьмите дату с форматом "%Y_%m_%d"
     std::string GetFileTimeStamp() const;
 
-    Logger() = default;
+    Logger() 
+    {
+      Init();
+    }
     Logger(const Logger&) = delete;
 
 public:
@@ -52,4 +55,19 @@ public:
 
 private:
     std::optional<std::chrono::system_clock::time_point> manual_ts_;
+    std::optional<std::ofstream> log_file_ ;//{GetFileTimeStamp() , std::ios::app  };
+public:
+    void Init()
+    {
+       auto now = std::chrono::system_clock::now() /*-std::chrono::days(100) */;    
+       SetTimestamp(now);
+       log_file_ = InitFile() ;
+    }
+    std::optional<std::ofstream> InitFile()
+    {
+       std::ofstream lt {GetFileTimeStamp() , std::ios::app  } ;
+       
+       return lt ;
+    }    
+    
 };

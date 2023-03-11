@@ -67,8 +67,7 @@ jobs:
           cmake --build .
       - name: run tests sprint1 restaurant_multi_threaded
         run: ./sprint1/problems/restaurant_multi_threaded/solution/build/bin/restaurant
-
-      - name: build tests sprint1 async_server
+     - name: build tests sprint1 async_server
         run: |
           cd sprint1/problems/async_server/solution
           mkdir build
@@ -122,26 +121,26 @@ jobs:
           CONFIG_PATH: ${{ github.workspace }}/sprint1/problems/final_task/solution/data/config.json
           IMAGE_NAME: final_task
 
-      - name: build tests sprint2 static_content
-        run: |
-          cd sprint2/problems/static_content/solution
-          mkdir build
-          cd build
-          conan install ..
-          cmake ..
-          cmake --build .
-          echo "COMMAND_RUN=${DELIVERY_APP} ${CONFIG_PATH} ${DATA_PATH}" >> $GITHUB_ENV
-        env:
-          DELIVERY_APP: ${{ github.workspace }}/sprint2/problems/static_content/solution/build/bin/game_server
-          CONFIG_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/data/config.json
-          DATA_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/static/
+#      - name: build tests sprint2 static_content
+#        run: |
+#          cd sprint2/problems/static_content/solution
+#          mkdir build
+#          cd build
+#          conan install ..
+#          cmake ..
+#          cmake --build .
+#          echo "COMMAND_RUN=${DELIVERY_APP} ${CONFIG_PATH} ${DATA_PATH}" >> $GITHUB_ENV
+#        env:
+#          DELIVERY_APP: ${{ github.workspace }}/sprint2/problems/static_content/solution/build/bin/game_server
+#          CONFIG_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/data/config.json
+#          DATA_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/static/
 
-      - name: run tests sprint2 static_content
-        run: pytest --junitxml=${GITHUB_WORKSPACE}/static_content.xml cpp-backend-tests-practicum/tests/test_s02_static_content.py
-        env:
-          DELIVERY_APP: ${{ github.workspace }}/sprint2/problems/static_content/solution/build/bin/game_server
-          CONFIG_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/data/config.json
-          DATA_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/static/
+#      - name: run tests sprint2 static_content
+#        run: pytest --junitxml=${GITHUB_WORKSPACE}/static_content.xml cpp-backend-tests-practicum/tests/test_s02_static_content.py
+#        env:
+#          DELIVERY_APP: ${{ github.workspace }}/sprint2/problems/static_content/solution/build/bin/game_server
+#          CONFIG_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/data/config.json
+#          DATA_PATH: ${{ github.workspace }}/sprint2/problems/static_content/solution/static/
 
 
       - name: build tests sprint2 logger

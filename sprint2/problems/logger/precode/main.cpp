@@ -57,7 +57,7 @@ void Logger::SetTimestamp(std::chrono::system_clock::time_point ts)
    if ( mdf )
    {
       log_file_ = InitFile() ;
-      std::cout << "New file " << GetFileTimeStamp() << std::endl;
+     // std::cout << "New file " << GetFileTimeStamp() << std::endl;
    }
 }
 
