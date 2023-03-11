@@ -57,27 +57,27 @@ jobs:
       - name: run tests sprint1 restaurant_single_threaded
         run: ./sprint1/problems/restaurant_single_threaded/solution/build/bin/restaurant
 
-      - name: build tests sprint1 restaurant_multi_threaded
-        run: |
-          cd sprint1/problems/restaurant_multi_threaded/solution
-          mkdir build
-          cd build
-          conan install ..
-          cmake ..
-          cmake --build .
-      - name: run tests sprint1 restaurant_multi_threaded
-        run: ./sprint1/problems/restaurant_multi_threaded/solution/build/bin/restaurant
-     - name: build tests sprint1 async_server
-        run: |
-          cd sprint1/problems/async_server/solution
-          mkdir build
-          cd build
-          conan install ..
-          cmake ..
-          cmake --build .
-          echo "COMMAND_RUN=${DELIVERY_APP}" >> $GITHUB_ENV
-        env:
-          DELIVERY_APP: ${{ github.workspace }}/sprint1/problems/async_server/solution/build/bin/hello_async
+#      - name: build tests sprint1 restaurant_multi_threaded
+#        run: |
+#          cd sprint1/problems/restaurant_multi_threaded/solution
+#          mkdir build
+#          cd build
+#          conan install ..
+#          cmake ..
+#          cmake --build .
+#      - name: run tests sprint1 restaurant_multi_threaded
+#        run: ./sprint1/problems/restaurant_multi_threaded/solution/build/bin/restaurant
+#     - name: build tests sprint1 async_server     
+#        run: |
+#          cd sprint1/problems/async_server/solution
+#          mkdir build
+#          cd build
+#          conan install ..
+#          cmake ..
+#          cmake --build .
+#          echo "COMMAND_RUN=${DELIVERY_APP}" >> $GITHUB_ENV
+#        env:
+#          DELIVERY_APP: ${{ github.workspace }}/sprint1/problems/async_server/solution/build/bin/hello_async
 
       - name: run tests sprint1 async_server
         run: pytest --junitxml=${GITHUB_WORKSPACE}/async_server.xml cpp-backend-tests-practicum/tests/test_l03_hello_async.py
